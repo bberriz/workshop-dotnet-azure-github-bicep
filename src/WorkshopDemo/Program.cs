@@ -8,6 +8,10 @@ using WorkshopDemo.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
+    builder.Configuration.AddAzureKeyVault(
+        new Uri($"https://kv-bberriz-{builder.Environment.EnvironmentName}.vault.azure.net/"),
+        new DefaultAzureCredential());
+
 // Add services to the container.    
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
